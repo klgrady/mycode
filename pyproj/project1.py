@@ -18,13 +18,14 @@ questions_array = [
          "12": 1,
          "13": 4,
          "15": 5,
-         "16": 1
+         "16": 2
          },
 
         {"question": "How much abuse can you take in a day? [0-5] ",
          "4": 1,
          "5": 5,
          "6": 5,
+         "10": 4,
          "11": 3,
          "13": 5
          },
@@ -49,11 +50,12 @@ questions_array = [
          "13": 2,
          "15": 5,
          "11": 2,
-         "16": 2
+         "16": 4
          },
 
         {"question": "How likely are you to try any food? [0-5] ", 
          "3": 3,
+         "7": 4,
          "13": 5
          },
 
@@ -81,7 +83,24 @@ questions_array = [
 
         ]
 
-professions = [["Chicken Sexer", "You'll determine the sex of chicks. Hurray!"], ["Netflix Tagger", "You'll watch endless Netflix to tag the genre. Woot!"], ["Dog Food Taster", "You'll determine whether dog food is delicious and has a nice crunch. Good for you!"], ["Snake Milker", "You get to (carefully) help snakes drool some venom to create anti-venin. Lucky you."], ["Telemarketer", "We hope you love to talk on the phone to people who hate you!"], ["Port-a-Potty Cleaner", "You love the smell of napalm in the morning, right?"], ["Forensic Entomologist", "Determine time of death of corpses by way of the insect population it's gathered. Sounds like fun, right?"], ["Roadkill Removal Specialist", "Drive around, listen to tunes, scrape carcasses off the road. Every day is a vacay."], ["Lego Sculptor", "Make incredible art with Legos. Just try not to step on any."], ["Professional Bridesmaid", "Not only do you have the pleasure of helping to plan and run the wedding, you a godawful dress to wear, too. Yayayay!"], ["Waterslide Tester", "It's all fun and games until there's a tragic accident. Until then, enjoy!"], ["Goat Yoga Instructor", "Yoga. People yoga. But with goats there. What could go wrong?"], ["Poison Taster", "Yes, these still exist. Travel around with famous people and make sure nobody tried to poison them. If they did... at least you won't need the job anymore."], ["UFO Reports Taker", "Listen to people talk about what they saw, write it down, bring stories back to your friends and family."], ["Wind Turbine Technician", "We hope you love heights because wind turbines are reeeeeeally high up there. Hang on tight and enjoy the ride!"], ["Paranormal Investigator", "Stay up all night, run around in the dark, scream like a kindergartener, and make sure it's all on video."]]
+professions = [
+        ["Chicken Sexer", "You'll determine the sex of chicks. Hurray!"], 
+        ["Netflix Tagger", "You'll watch endless Netflix to tag the genre. Woot!"], 
+        ["Dog Food Taster", "You'll determine whether dog food is delicious and has a nice crunch. Good for you!"], 
+        ["Snake Milker", "You get to (carefully) help snakes drool some venom to create anti-venin. Lucky you."], 
+        ["Telemarketer", "We hope you love to talk on the phone to people who hate you!"], 
+        ["Port-a-Potty Cleaner", "You love the smell of napalm in the morning, right?"], 
+        ["Forensic Entomologist", "Determine time of death of corpses by way of the insect population it's gathered. Sounds like fun, right?"], 
+        ["Roadkill Removal Specialist", "Drive around, listen to tunes, scrape carcasses off the road. Every day is a vacay."], 
+        ["Lego Sculptor", "Make incredible art with Legos. Just try not to step on any."], 
+        ["Professional Bridesmaid", "Not only do you have the pleasure of helping to plan and run the wedding, you a godawful dress to wear, too. Yayayay!"], 
+        ["Waterslide Tester", "It's all fun and games until there's a tragic accident. Until then, enjoy!"], 
+        ["Goat Yoga Instructor", "Yoga. People yoga. But with goats there. What could go wrong?"], 
+        ["Poison Taster", "Yes, these still exist. Travel around with famous people and make sure nobody tried to poison them. If they did... at least you won't need the job anymore."], 
+        ["UFO Reports Taker", "Listen to people talk about what they saw, write it down, bring stories back to your friends and family."], 
+        ["Wind Turbine Technician", "We hope you love heights because wind turbines are reeeeeeally high up there. Hang on tight and enjoy the ride!"], 
+        ["Paranormal Investigator", "Stay up all night, run around in the dark, scream like a kindergartener, and make sure it's all on video."]
+        ]
 
 
 def main():
@@ -102,6 +121,19 @@ def main():
 
         response = int(response)
 
+        # if/elif/else requirement complete!
+        if response < 2:
+            print("Y'know, therapy might help with that.")
+        elif response == 2:
+            print("Maybe you can take a class?")
+        elif response == 3:
+            print("Well, you have other qualities, right?")
+        elif response == 4:
+            print("So, you have commitment issues? Is that it?")
+        else:
+            print("Cool, we can work with that.")
+        print("\n")
+
         # And calculate a new tally depending on that response for related questions
         for item in key:
             if item.isdigit():
@@ -114,13 +146,12 @@ def main():
 
     # Print result
     print("\n\n\nYou will be a " + professions[max_index][0] + "!")
-    #print(descriptions[max_index])
     print(professions[max_index][1])
     print("Congrats!")
 
     # Print the womp womp
     random_index = random.randint(0,15)
-    print("If that doesn't sound great to you, too bad. Maybe try " + professions[random_index][0] + " instead?")
+    print("If that doesn't sound great to you, too bad. Maybe try " + professions[random_index][0] + " instead?\n\n\n")
 
 
 # run main if it's a script
