@@ -84,20 +84,20 @@ questions_array = [
         ]
 
 professions = [
-        ["Chicken Sexer", "You'll determine the sex of chicks. Hurray!"], 
-        ["Netflix Tagger", "You'll watch endless Netflix to tag the genre. Woot!"], 
-        ["Dog Food Taster", "You'll determine whether dog food is delicious and has a nice crunch. Good for you!"], 
-        ["Snake Milker", "You get to (carefully) help snakes drool some venom to create anti-venin. Lucky you."], 
+        ["Chicken Sexer", "Guess what? Chicken butt. You'll spend the day determining the sex of chicks. Hurray!"], 
+        ["Netflix Tagger", "You'll watch endless Netflix to tag the genre. Pop some popcorn and grab that Good 'n Plenty. Woot!"], 
+        ["Dog Food Taster", "You'll determine whether dog food is delicious and has a nice crunch since dooggos can't tell us what they think. Good for you!"], 
+        ["Snake Milker", "You get to (carefully) help snakes divest themselves of venom to create anti-venin. Lucky you."], 
         ["Telemarketer", "We hope you love to talk on the phone to people who hate you!"], 
         ["Port-a-Potty Cleaner", "You love the smell of napalm in the morning, right?"], 
-        ["Forensic Entomologist", "Determine time of death of corpses by way of the insect population it's gathered. Sounds like fun, right?"], 
-        ["Roadkill Removal Specialist", "Drive around, listen to tunes, scrape carcasses off the road. Every day is a vacay."], 
+        ["Forensic Entomologist", "Determine time of death by way of the insect population. Sounds like fun, right?"], 
+        ["Roadkill Removal Specialist", "Drive around, listen to some tunes, scrape carcasses off the road. Every day is a vacay."], 
         ["Lego Sculptor", "Make incredible art with Legos. Just try not to step on any."], 
-        ["Professional Bridesmaid", "Not only do you have the pleasure of helping to plan and run the wedding, you a godawful dress to wear, too. Yayayay!"], 
+        ["Professional Bridesmaid", "Not only do you have the pleasure of helping to plan and run the wedding, you get a godawful dress to wear, too. Yayayay!"], 
         ["Waterslide Tester", "It's all fun and games until there's a tragic accident. Until then, enjoy!"], 
-        ["Goat Yoga Instructor", "Yoga. People yoga. But with goats there. What could go wrong?"], 
+        ["Goat Yoga Instructor", "Yoga. People yoga. But with goats around. What could go wrong?"], 
         ["Poison Taster", "Yes, these still exist. Travel around with famous people and make sure nobody tried to poison them. If they did... at least you won't need the job anymore."], 
-        ["UFO Reports Taker", "Listen to people talk about what they saw, write it down, bring stories back to your friends and family."], 
+        ["UFO Reports Taker", "Listen to some (probably drunk) people talk about what they saw, write it down, bring stories back to your friends and family."], 
         ["Wind Turbine Technician", "We hope you love heights because wind turbines are reeeeeeally high up there. Hang on tight and enjoy the ride!"], 
         ["Paranormal Investigator", "Stay up all night, run around in the dark, scream like a kindergartener, and make sure it's all on video."]
         ]
@@ -147,7 +147,7 @@ def main():
     # Print result
     print("\n\n\nYou will be a " + professions[max_index][0] + "!")
     print(professions[max_index][1])
-    print("Congrats!")
+    print("Congrats!\n")
 
     # Print the womp womp
     random_index = random.randint(0,15)
