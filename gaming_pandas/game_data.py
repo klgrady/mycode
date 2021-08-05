@@ -16,8 +16,8 @@ def top_ten_sorted_by_ratings(games):
     print(ratings_games.head(10))
     graphit = input("\n\nWould you like to create a graph of this data? (y or n) ")
     if graphit.lower() == "y" or graphit.lower() == "yes":
-        #ratings_games = sorted_by_ratings[['ResponseName','RecommendationCount']]
-        #ratings_games.set_index('ResponseName', inplace=True)
+        ratings_games = sorted_by_ratings[['ResponseName','RecommendationCount']]
+        ratings_games.set_index('ResponseName', inplace=True)
         make_a_graph(ratings_games.head(10), title, 'RecommendationCount')
    
 
@@ -29,8 +29,8 @@ def bottom_ten_sorted_by_ratings(games):
     print(ratings_games.tail(10))
     graphit = input("\n\nWould you like to create a graph of this data? (y or n) ")
     if graphit.lower() == "y" or graphit.lower() == "yes":
-        #ratings_games = sorted_by_ratings[['ResponseName','RecommendationCount']]
-        #ratings_games.set_index('ResponseName', inplace=True)
+        ratings_games = sorted_by_ratings[['ResponseName','RecommendationCount']]
+        ratings_games.set_index('ResponseName', inplace=True)
         make_a_graph(ratings_games.tail(10), title, 'RecommendationCount')
   
 def most_recent_games(games):
@@ -41,8 +41,8 @@ def most_recent_games(games):
     print(recent_games.head(10))
     graphit = input("\n\nWould you like to create a graph of this data? (y or n) ")
     if graphit.lower() == "y" or graphit.lower() == "yes":
-        #ratings_games = sorted_by_ratings[['ResponseName','ReleaseDate']]
-        #ratings_games.set_index('ResponseName', inplace=True)
+        ratings_games = sorted_by_date[['ResponseName','ReleaseDate']]
+        ratings_games.set_index('ResponseName', inplace=True)
         make_a_graph(recent_games.head(10), title, 'ReleaseDate')
 
 
@@ -54,8 +54,8 @@ def highest_dlc_games(games):
     print(dlc_games.head(10))
     graphit = input("\n\nWould you like to create a graph of this data? (y or n) ")
     if graphit.lower() == "y" or graphit.lower() == "yes":
-        #dlc_games = sorted_by_dlc[['ResponseName','DLCCount']]
-        #dlc_games.set_index('ResponseName', inplace=True)
+        dlc_games = sorted_by_dlc[['ResponseName','DLCCount']]
+        dlc_games.set_index('ResponseName', inplace=True)
         make_a_graph(dlc_games.head(10), title, 'DLCCount')
 
 def top_ten_free(games):
@@ -66,8 +66,8 @@ def top_ten_free(games):
     print(free_games.head(10))
     graphit = input("\n\nWould you like to create a graph of this data? (y or n) ")
     if graphit.lower() == "y" or graphit.lower() == "yes":
-        #free_games = sorted_by_free[['ResponseName','RecommendationCount']]
-        #free_games.set_index('ResponseName', inplace=True)
+        free_games = sorted_by_free[['ResponseName','RecommendationCount']]
+        free_games.set_index('ResponseName', inplace=True)
         make_a_graph(free_games.head(10), title, 'RecommendationCount')
 
 def top_ten_indie(games):
@@ -78,8 +78,8 @@ def top_ten_indie(games):
     print(indie_games.head(10))
     graphit = input("\n\nWould you like to create a graph of this data? (y or n) ")
     if graphit.lower() == "y" or graphit.lower() == "yes":
-        #indie_games = sorted_by_indie[['ResponseName','RecommendationCount']]
-        #indie_games.set_index('ResponseName', inplace=True)
+        indie_games = sorted_by_indie[['ResponseName','RecommendationCount']]
+        indie_games.set_index('ResponseName', inplace=True)
         make_a_graph(indie_games.head(10), title, 'RecommendationCount')
 
 def top_ten_strategy(games):
@@ -90,8 +90,8 @@ def top_ten_strategy(games):
     print(strategy_games.head(10))
     graphit = input("\n\nWould you like to create a graph of this data? (y or n) ")
     if graphit.lower() == "y" or graphit.lower() == "yes":
-        #strategy_games = sorted_by_strategy[['ResponseName','RecommendationCount']]
-        #strategy_games.set_index('ResponseName', inplace=True)
+        strategy_games = sorted_by_strategy[['ResponseName','RecommendationCount']]
+        strategy_games.set_index('ResponseName', inplace=True)
         make_a_graph(strategy_games.head(10), title, 'RecommendationCount')
 
 
@@ -136,46 +136,51 @@ def make_a_graph(data, gtitle, col):
     graph_type = input("Which graph type? (barh, bar, line, hist, box, pie) " )
        
     if graph_type in ["barh", "bar", "line", "hist", "pie"]:
-        #try:
+        try:
             if graph_type == "bar":
                 ax = data[col].head(int(num)).plot(x='ResponseName', y=col, kind='bar', title=gtitle)
-                ax.set_xlabel("Game Title")
-                ax.set_ylabel(col)
+                x = "Game Title"
+                y = col
 
             elif graph_type == "line":
                 ax = data[col].head(int(num)).plot(x=data['ResponseName'], y=[col], xlabel='ResponseName', ylabel=col, kind='line', title=gtitle)
-                ax.set_xlabel("Game Title")
-                ax.set_ylabel(col)
+                x = "Game Title"
+                y = col
 
             elif graph_type == "hist":
                 ax = data[[col]].head(int(num)).plot(kind='hist', title=gtitle)
-                ax.set_xlabel("Game Title")
-                ax.set_ylabel(col)
+                x = "Game Title"
+                y = col
 
             elif graph_type == "pie":
                 ax = data[col].head(int(num)).plot(x='ResponseName', y=col, kind='pie', title=gtitle)
-                ax.set_xlabel("Game Title")
-                ax.set_ylabel(col)
+                x = ""
+                y = ""
 
             else:  ## barh default
                 ax = data[col].head(int(num)).plot(x='ResponseName', y=col, kind='barh', title=gtitle)
-                ax.set_ylabel("Game Title")
-                ax.set_xlabel(col)
+                x = col
+                y = "Game Title"
 
             filename = graph_dir + gtitle.replace(" ", "") + graph_type + str(num) + ".png"
+            ax.set_xlabel(x)
+            ax.set_ylabel(y)
             plt.savefig(filename, bbox_inches='tight')
             print("PNG created:", filename)
 
-        #except TypeError:
-        #    print("Sorry, couldn't make that graph. There's no numerical data to plot.")
-        #except:
-        #    print("I dunno, man. No graph, no joy.")
+        except TypeError:
+            print("Sorry, couldn't make that graph. There's no numerical data to plot.")
+        
+        except:
+            print("I dunno, man. No graph, no joy.")
+
 
 def create_graph_title(title):
     width, height = os.get_terminal_size()
     print("\n\n\n")
     print(title.center(width))
     print("\n")
+
 
 
 def create_menu():
@@ -206,7 +211,7 @@ def main():
     games = pd.read_csv(csv_file)
     games.drop_duplicates(inplace=True)
     games = games[games['ReleaseDate'].notna()]
-    games.drop(['QueryID','ResponseID'], axis='columns', inplace=True)
+#    games.drop(['QueryID','ResponseID'], axis='columns', inplace=True)
 
     ## Create menu
     choice = "1"
