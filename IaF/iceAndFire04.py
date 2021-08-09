@@ -5,6 +5,8 @@
 
 import requests
 import pprint
+import pyfiglet
+
 
 AOIF_CHAR = "https://www.anapioficeandfire.com/api/characters/"
 
@@ -26,6 +28,7 @@ def get_house(info):
 
 def get_book(info):
     books = []
+    info['books'] += info['povBooks']
     for book in info['books']:
         bookresp = requests.get(book)
         if not check_response(bookresp):
@@ -44,9 +47,9 @@ def print_houses(houses):
     if (len(houses) > 1):
         houselist = '\n\t'.join(houses)
     elif (len(houses) == 1):
-        houselist = '\t' + houses[0]
+        houselist = houses[0]
     else:
-        houselist = '\nNo houses'
+        houselist = 'No houses'
     return houselist
 
 
@@ -54,32 +57,34 @@ def print_books(books):
     if (len(books) > 1):
         booklist = '\n\t'.join(books)
     elif (len(books) == 1):
-        booklist = '\t' + books[0]
+        booklist = books[0]
     else:
-        booklist = '\nNo books, which is kinda weird'
+        booklist = '\n\tNo books, which is kinda weird'
     return booklist
 
 
 
 def main():
-        ## Ask user for input
-        got_charToLookup = input("Pick a number between 1 and 1000 to return info on a GoT character! " )
+    banner = pyfiglet.figlet_format("Getcher Game of Thrones")
+    print(banner)
+    ## Ask user for input
+    got_charToLookup = input("Pick a number between 1 and 1000 to return info on a GoT character! " )
 
-        ## Send HTTPS GET to the API of ICE and Fire character resource
-        gotresp = requests.get(AOIF_CHAR + got_charToLookup)
-        if not check_response(gotresp):
-            print("API error");
-            quit()
+    ## Send HTTPS GET to the API of ICE and Fire character resource
+    gotresp = requests.get(AOIF_CHAR + got_charToLookup)
+    if not check_response(gotresp):
+        print("API error");
+        quit()
 
-        ## Decode the response
-        got_dj = gotresp.json()
-        name = got_dj['name']
-        houses = get_house(got_dj)
-        books  = get_book(got_dj)
-        print("Character Name:", name)
-        print(f"Houses: \n{print_houses(houses)}")
-        print(f"Books: \n{print_books(books)}")
+    ## Decode the response
+    got_dj = gotresp.json()
+    name = got_dj['name'] if got_dj['name'] != "" else "Unnamed"
+    houses = get_house(got_dj)
+    books  = get_book(got_dj)
+    print("Character Name:", name)
+    print(f"Houses: \n\t{print_houses(houses)}")
+    print(f"Books: \n\t{print_books(books)}")
 
 if __name__ == "__main__":
-        main()
+    main()
 
