@@ -1,0 +1,7 @@
+export OS_AUTH_URL=www.me.com
+export OS_IDENTITY_API_VERSION=3
+export OS_PROJECT_NAME=www.project.com
+export OS_PROJECT_DOMAIN_NAME=project.com
+export OS_USERNAME=someone
+export OS_USER_DOMAIN_NAME=user.com
+export OS_PASSWORD=password
