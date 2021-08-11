@@ -39,8 +39,8 @@ def form():
 def trylogin():
     return redirect("/login/mysteryperson")
 
-@app.route("/login/<name>")
-@limiter.exempt
+@app.route("/login/<name>") 
+@limiter.exempt               #haha! bait and switch with the redirect
 def login(name):
     session["allowed"] = name
     return redirect("/")
