@@ -1,0 +1,11 @@
+{% for host in groups %}
+   <h4><span>{{ host.ip }}   {{ host.fqdn }} # {{ host.hostname }}</span></h4>
+   {% endfor %}
+
+<br>
+{% if login=="allowed" %}
+<li><a href = '/form'></b>Click here to add more data</b></a></li>
+{% endif %}
+<li><a href = '/login'></b>Click here to log in</b></a></li>
+<li><a href = '/logout'></b>Click here to log out</b></a></li>
+		
